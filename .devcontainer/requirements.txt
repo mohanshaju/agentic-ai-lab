@@ -1,6 +1,7 @@
 # --- Core LLM provider SDKs ---
 anthropic
 openai
+google-genai
 
 # --- Agent orchestration frameworks ---
 langchain
