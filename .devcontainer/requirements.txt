@@ -1,0 +1,26 @@
+# --- Core LLM provider SDKs ---
+anthropic
+openai
+
+# --- Agent orchestration frameworks ---
+langchain
+langgraph
+langchain-anthropic
+langchain-openai
+crewai
+google-adk
+
+# --- RAG / retrieval building blocks (from our semantic layer & RAG discussion) ---
+llama-index
+chromadb
+sentence-transformers
+
+# --- MCP (Model Context Protocol) support ---
+mcp
+
+# --- Utility / dev quality of life ---
+python-dotenv
+pydantic
+jupyter
+rich
+httpx

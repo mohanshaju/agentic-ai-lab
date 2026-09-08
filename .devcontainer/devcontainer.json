@@ -1,0 +1,51 @@
+{
+  "name": "agentic-ai-learning-lab",
+
+  // Base: Debian-based universal dev image with Python + Node preinstalled
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+
+  "features": {
+    // Adds Node.js (needed for Claude Code CLI + JS-based MCP servers)
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    },
+    // Docker-in-Docker: lets you build/run containers INSIDE the codespace
+    // (useful for testing MCP servers like Stacklok's ToolHive pattern)
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "moby": true
+    },
+    // Common CLI utilities (git, zsh, etc.)
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true
+    }
+  },
+
+  // Runs once after the container is created
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+
+  // VS Code extensions auto-installed in the Codespace
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-azuretools.vscode-docker",
+        "esbenp.prettier-vscode",
+        "anthropic.claude-code"
+      ]
+    }
+  },
+
+  // Recommended machine size for running LLM agent workflows comfortably
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb"
+  },
+
+  // Forwarded ports (e.g., if you spin up a local API for agent testing)
+  "forwardPorts": [8000, 3000],
+
+  "remoteUser": "vscode"
+}
