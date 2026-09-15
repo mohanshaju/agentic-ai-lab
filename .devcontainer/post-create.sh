@@ -26,30 +26,30 @@ echo "Claude Code:    $(claude --version || echo 'Run: claude auth login to fini
 echo "===================================================="
 
 # --- 4. Configure Claude Code to route through OpenRouter (if secret is present) ---
-echo "Configuring Claude Code..."
-mkdir -p ~/.claude
+#echo "Configuring Claude Code..."
+#mkdir -p ~/.claude
 
-if [ -n "$OPENROUTER_API_KEY" ]; then
+#if [ -n "$OPENROUTER_API_KEY" ]; then
   # OPENROUTER_API_KEY is injected securely by GitHub Codespaces Secrets -
   # it is NEVER written into this script or committed to the repo.
-  cat > ~/.claude/settings.json << EOF
-{
-  "env": {
-    "ANTHROPIC_BASE_URL": "https://openrouter.ai/api",
-    "ANTHROPIC_AUTH_TOKEN": "$OPENROUTER_API_KEY",
-    "ANTHROPIC_API_KEY": ""
-  }
-}
-EOF
-  echo "Claude Code configured to route through OpenRouter."
-else
-  echo "No OPENROUTER_API_KEY secret found - skipping OpenRouter setup."
-  echo "Add it under GitHub Settings > Codespaces > Secrets, then rebuild the container."
-  echo "Falling back to standard Anthropic login (run 'claude' to authenticate directly)."
-fi
+#  cat > ~/.claude/settings.json << EOF
+#{
+#  "env": {
+#    "ANTHROPIC_BASE_URL": "https://openrouter.ai/api",
+#    "ANTHROPIC_AUTH_TOKEN": "$OPENROUTER_API_KEY",
+#    "ANTHROPIC_API_KEY": ""
+#  }
+#}
+#EOF
+#  echo "Claude Code configured to route through OpenRouter."
+#else
+#  echo "No OPENROUTER_API_KEY secret found - skipping OpenRouter setup."
+#  echo "Add it under GitHub Settings > Codespaces > Secrets, then rebuild the container."
+#  echo "Falling back to standard Anthropic login (run 'claude' to authenticate directly)."
+#fi
 
 echo "===================================================="
 echo "Setup complete! Next steps:"
-echo "1. Run 'claude' in the terminal - it will use OpenRouter automatically if configured above"
+echo "1. Run 'claude' in the terminal - it will ask for login and then you can test the Claude Code CLI."
 echo "2. Activate the Python environment is already global - just run 'python3'"
 echo "3. See README.md for example commands to get started"
